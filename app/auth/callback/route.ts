@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const code = searchParams.get('code')
   
   // "next" ini buat nentuin habis login mau dilempar kemana (default ke home '/')
-  const next = searchParams.get('next') ?? '/'
+  const next = searchParams.get('next') ?? '/dashboard'
 
   if (code) {
     const supabase = await createClient()
