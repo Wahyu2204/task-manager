@@ -57,6 +57,22 @@ export async function signup(formData: FormData) {
   return redirect('/login?message=Sukses! Cek email lo buat verifikasi.')
 }
 
+export async function loginWithGoogle() {
+  const supabase = await createClient()
+  
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      // Ini bakal arahin user ke route.ts yang kita buat di langkah 1
+      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/auth/callback`,
+    },
+  })
+
+  if (data.url) {
+    redirect(data.url)
+  }
+}
+
 export async function signOut() {
   const supabase = await createClient()
   await supabase.auth.signOut()
