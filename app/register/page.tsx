@@ -20,10 +20,10 @@ export default async function RegisterPage({
   const { message } = await searchParams;
 
   return (
-    <div className="flex h-screen w-full items-center justify-center px-4">
+    <div className="flex h-screen w-full items-center justify-center px-4 relative animate-in fade-in duration-500">
       <Button
         variant="ghost"
-        className="absolute top-4 left-4 md:top-8 md:left-8"
+        className="absolute top-4 left-4 md:top-8 md:left-8 animate-in fade-in slide-in-from-left-4 duration-500 ease-out"
         asChild
       >
         <Link href="/">
@@ -32,7 +32,7 @@ export default async function RegisterPage({
         </Link>
       </Button>
 
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both shadow-lg">
         <CardHeader>
           <CardTitle className="text-2xl">Daftar Akun Baru</CardTitle>
           <CardDescription>
@@ -41,8 +41,9 @@ export default async function RegisterPage({
         </CardHeader>
         <CardContent>
           <form className="grid gap-4">
+            {/* Error Message: Pop Effect (Zoom In) */}
             {message && (
-              <div className="p-3 bg-red-100 text-red-900 text-sm rounded-md border border-red-200">
+              <div className="p-3 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 animate-in fade-in zoom-in-95 duration-300">
                 {message}
               </div>
             )}
@@ -63,14 +64,20 @@ export default async function RegisterPage({
             </div>
 
             {/* Tombol Register */}
-            <Button formAction={signup} className="w-full">
+            <Button
+              formAction={signup}
+              className="w-full shadow-sm hover:shadow-md transition-all"
+            >
               Buat Akun
             </Button>
           </form>
 
           <div className="mt-4 text-center text-sm">
             Udah punya akun?{" "}
-            <Link href="/login" className="underline font-medium">
+            <Link
+              href="/login"
+              className="underline font-medium hover:text-blue-600 transition-colors"
+            >
               Login disini
             </Link>
           </div>

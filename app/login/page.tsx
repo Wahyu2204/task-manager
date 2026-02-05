@@ -20,11 +20,10 @@ export default async function LoginPage({
   const { message } = await searchParams;
 
   return (
-    <div className="flex h-screen w-full items-center justify-center px-4 relative">
-      {/* Tombol Kembali */}
+    <div className="flex h-screen w-full items-center justify-center px-4 relative animate-in fade-in duration-500">
       <Button
         variant="ghost"
-        className="absolute top-4 left-4 md:top-8 md:left-8"
+        className="absolute top-4 left-4 md:top-8 md:left-8 animate-in fade-in slide-in-from-left-4 duration-500 ease-out"
         asChild
       >
         <Link href="/">
@@ -33,19 +32,17 @@ export default async function LoginPage({
         </Link>
       </Button>
 
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both shadow-lg">
         <CardHeader>
           <CardTitle className="text-2xl">Login Task Manager</CardTitle>
-          <CardDescription>
-            Pilih cara masuk yang lo suka.
-          </CardDescription>
+          <CardDescription>Pilih cara masuk yang lo suka.</CardDescription>
         </CardHeader>
         <CardContent>
           {/* === 1. TOMBOL LOGIN GOOGLE === */}
           <form action={loginWithGoogle} className="mb-4">
             <Button
               variant="outline"
-              className="w-full py-5 relative"
+              className="w-full py-5 relative hover:bg-zinc-50 transition-colors"
               type="submit"
             >
               {/* Icon Google SVG */}
@@ -77,14 +74,16 @@ export default async function LoginPage({
               <span className="w-full border-t border-zinc-200" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-zinc-500">Atau pake email</span>
+              <span className="bg-white px-2 text-zinc-500">
+                Atau pake email
+              </span>
             </div>
           </div>
 
           {/* === 3. FORM LOGIN BIASA === */}
           <form className="grid gap-4">
             {message && (
-              <div className="p-3 bg-blue-50 text-blue-900 text-sm rounded-md border border-blue-200">
+              <div className="p-3 bg-blue-50 text-blue-900 text-sm rounded-md border border-blue-200 animate-in fade-in zoom-in-95 duration-300">
                 {message}
               </div>
             )}
@@ -111,7 +110,10 @@ export default async function LoginPage({
 
           <div className="mt-4 text-center text-sm">
             Belum punya akun?{" "}
-            <Link href="/register" className="underline font-medium">
+            <Link
+              href="/register"
+              className="underline font-medium hover:text-blue-600 transition-colors"
+            >
               Daftar dulu disini
             </Link>
           </div>

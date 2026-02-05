@@ -32,38 +32,36 @@ export default async function SettingsPage({
     .single();
 
   return (
-    // TAMBAHAN 1: 'mx-auto' biar container ini posisinya di tengah layar
-    <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500 pb-10">
-      
-      <div className="space-y-2 text-center sm:text-left">
+    <div className="max-w-4xl mx-auto space-y-8 pb-10">
+      {/* 1. HEADER */}
+      <div className="space-y-2 text-center sm:text-left animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
         <p className="text-zinc-500">Kelola preferensi akun lo disini.</p>
       </div>
 
-      {/* NOTIFIKASI */}
+      {/* ALERT NOTIFIKASI */}
       {message && (
-        <Alert className="bg-green-50 border-green-200 text-green-900">
+        <Alert className="bg-green-50 border-green-200 text-green-900 animate-in fade-in zoom-in-95 duration-300">
           <CheckCircle2 className="h-4 w-4" />
           <AlertTitle>Sukses</AlertTitle>
           <AlertDescription>{message}</AlertDescription>
         </Alert>
       )}
       {error && (
-        <Alert variant="destructive">
+        <Alert
+          variant="destructive"
+          className="animate-in fade-in zoom-in-95 duration-300"
+        >
           <AlertCircle className="h-4 w-4" />
           <AlertTitle>Error</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
-      {/* TAMBAHAN 2: 
-         - Ganti 'items-center justify-center' jadi 'flex flex-col gap-6'
-         - Ini bikin kartu numpuk ke bawah rapi dengan jarak 24px (gap-6)
-      */}
+      {/* CONTAINER KARTU */}
       <div className="flex flex-col gap-6">
-        
         {/* === CARD 1: PROFILE === */}
-        <Card>
+        <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle>Profil Saya</CardTitle>
             <CardDescription>
@@ -71,13 +69,17 @@ export default async function SettingsPage({
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={updateProfile} className="flex flex-col sm:flex-row gap-4 items-end">
+            <form
+              action={updateProfile}
+              className="flex flex-col sm:flex-row gap-4 items-end"
+            >
               <div className="grid gap-2 w-full max-w-md">
                 <Label htmlFor="username">Username / Nama Panggilan</Label>
                 <Input
                   name="username"
                   defaultValue={profile?.username || ""}
                   placeholder="Masukan nama..."
+                  className="bg-white"
                 />
               </div>
               <Button type="submit">Simpan Profil</Button>
@@ -86,7 +88,7 @@ export default async function SettingsPage({
         </Card>
 
         {/* === CARD 2: EMAIL === */}
-        <Card>
+        <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-300 ease-out fill-mode-both hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle>Email Address</CardTitle>
             <CardDescription>
@@ -94,13 +96,17 @@ export default async function SettingsPage({
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form action={updateEmail} className="flex flex-col sm:flex-row gap-4 items-end">
+            <form
+              action={updateEmail}
+              className="flex flex-col sm:flex-row gap-4 items-end"
+            >
               <div className="grid gap-2 w-full max-w-md">
                 <Label htmlFor="email">Email Baru</Label>
                 <Input
                   name="email"
                   type="email"
                   defaultValue={user?.email || ""}
+                  className="bg-white"
                 />
               </div>
               <Button type="submit" variant="secondary">
@@ -111,7 +117,7 @@ export default async function SettingsPage({
         </Card>
 
         {/* === CARD 3: PASSWORD === */}
-        <Card>
+        <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-500 ease-out fill-mode-both hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle>Security</CardTitle>
             <CardDescription>
@@ -122,21 +128,30 @@ export default async function SettingsPage({
             <form action={updatePassword} className="space-y-4 max-w-md">
               <div className="grid gap-2">
                 <Label htmlFor="password">Password Baru</Label>
-                <Input name="password" type="password" required />
+                <Input
+                  name="password"
+                  type="password"
+                  required
+                  className="bg-white"
+                />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="confirmPassword">Konfirmasi Password</Label>
-                <Input name="confirmPassword" type="password" required />
+                <Input
+                  name="confirmPassword"
+                  type="password"
+                  required
+                  className="bg-white"
+                />
               </div>
               <div className="pt-2">
-                 <Button type="submit" variant="destructive">
-                    Ganti Password
-                 </Button>
+                <Button type="submit" variant="destructive">
+                  Ganti Password
+                </Button>
               </div>
             </form>
           </CardContent>
         </Card>
-
       </div>
     </div>
   );

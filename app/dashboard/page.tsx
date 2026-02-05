@@ -46,23 +46,25 @@ export default async function DashboardPage() {
     .limit(3);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-10 animate-in fade-in duration-500">
-      {/* === HEADER (Gaya Landing Page) === */}
-      <div className="text-center space-y-2 max-w-2xl">
+    <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-10">
+      {/* === 1. HEADER === */}
+      <div className="text-center space-y-2 max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-extrabold tracking-tight lg:text-5xl text-zinc-900">
           Progress Lo Hari Ini
         </h1>
         <p className="text-zinc-500 text-lg">
-          {/* Disini kita pake displayName yang udah kita racik diatas */}
-          Halo <span className="font-medium text-zinc-900 capitalize">{displayName}</span>! 
-          Jangan lupa napas, satu-satu aja ngerjainnya.
+          Halo{" "}
+          <span className="font-medium text-zinc-900 capitalize">
+            {displayName}
+          </span>
+          ! Jangan lupa napas, satu-satu aja ngerjainnya.
         </p>
       </div>
 
-      {/* === CARDS STATISTIK (Centered Grid) === */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl px-4">
+      {/* === 2. CARDS STATISTIK === */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl px-4 animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both">
         {/* Card 1: Total */}
-        <Card className="shadow-sm border-zinc-200 bg-white/50 hover:bg-white transition-colors">
+        <Card className="shadow-sm border-zinc-200 bg-white/50 hover:bg-white transition-colors hover:-translate-y-1 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium text-zinc-500">
               Total Task
@@ -78,7 +80,7 @@ export default async function DashboardPage() {
         </Card>
 
         {/* Card 2: Pending */}
-        <Card className="shadow-sm border-orange-100 bg-orange-50/50 hover:bg-orange-50 transition-colors">
+        <Card className="shadow-sm border-orange-100 bg-orange-50/50 hover:bg-orange-50 transition-colors hover:-translate-y-1 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium text-orange-600">
               Perlu Dikerjain
@@ -94,7 +96,7 @@ export default async function DashboardPage() {
         </Card>
 
         {/* Card 3: Completed */}
-        <Card className="shadow-sm border-green-100 bg-green-50/50 hover:bg-green-50 transition-colors">
+        <Card className="shadow-sm border-green-100 bg-green-50/50 hover:bg-green-50 transition-colors hover:-translate-y-1 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium text-green-600">
               Selesai
@@ -110,8 +112,8 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      {/* === SECTION: TASK YANG BELUM DIKERJAIN (List Simple) === */}
-      <div className="w-full max-w-4xl px-4 space-y-4 text-center md:text-left">
+      {/* === 3. LIST TASK === */}
+      <div className="w-full max-w-4xl px-4 space-y-4 text-center md:text-left animate-in fade-in slide-in-from-bottom-8 duration-500 delay-300 ease-out fill-mode-both">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold text-zinc-900">
             Task Prioritas (Belum Kelar)
@@ -128,7 +130,7 @@ export default async function DashboardPage() {
             {recentTasks.map((task) => (
               <div
                 key={task.id}
-                className="flex items-center justify-between p-4 bg-white border border-zinc-100 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                className="flex items-center justify-between p-4 bg-white border border-zinc-100 rounded-lg shadow-sm hover:shadow-md transition-all hover:scale-[1.01]"
               >
                 <span className="font-medium text-zinc-700">{task.title}</span>
                 <span className="text-xs bg-zinc-100 px-2 py-1 rounded text-zinc-500">

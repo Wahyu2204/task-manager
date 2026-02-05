@@ -14,11 +14,10 @@ export default async function Home() {
     redirect("/dashboard");
   }
 
-  // TAMPILAN LANDING PAGE (Cuma buat tamu)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-white relative">
+    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-white relative overflow-hidden">
       {/* === NAMA WEB (POJOK KIRI ATAS) === */}
-      <div className="absolute top-8 left-8">
+      <div className="absolute top-8 left-8 animate-in fade-in slide-in-from-top-10 duration-500 ease-out">
         <Link
           href="/"
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -36,29 +35,37 @@ export default async function Home() {
 
       {/* === KONTEN UTAMA === */}
       <div className="w-full max-w-2xl text-center space-y-6">
-        {/* === BAGIAN CREATED BY === */}
-        <p className="text-sm font-medium text-zinc-500">
-          Created By{" "}
-          <a
-            href="https://wahyu-labs.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-zinc-900 hover:text-blue-600 hover:underline transition-colors"
-          >
-            Wahyu Andrianto Wibowo
-          </a>
-        </p>
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
+          <p className="text-sm font-medium text-zinc-500">
+            Created By{" "}
+            <a
+              href="https://wahyu-labs.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-900 hover:text-blue-600 hover:underline transition-colors"
+            >
+              Wahyu Andrianto Wibowo
+            </a>
+          </p>
+        </div>
 
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl text-zinc-900">
+        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl text-zinc-900 animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 fill-mode-both ease-out">
           Task Manager App 🚀
         </h1>
-        <p className="text-zinc-500 text-lg">
+
+        <p className="text-zinc-500 text-lg animate-in fade-in slide-in-from-bottom-8 duration-500 delay-300 fill-mode-both ease-out">
           Kelola tugas lo biar nggak lupa ngerjain skripsi dan project. Daftar
           sekarang gratis!
         </p>
-        <div className="justify-center">
+
+        <div className="justify-center animate-in fade-in slide-in-from-bottom-8 duration-500 delay-500 fill-mode-both ease-out">
           <Link href="/login">
-            <Button size="lg">Login / Register Sekarang</Button>
+            <Button
+              size="lg"
+              className="shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+            >
+              Login / Register Sekarang
+            </Button>
           </Link>
         </div>
       </div>
