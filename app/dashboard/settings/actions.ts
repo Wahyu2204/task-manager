@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { createClient as createAdminClient } from '@supabase/supabase-js'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -66,4 +67,42 @@ export async function updatePassword(formData: FormData) {
   }
 
   return redirect('/dashboard/settings?message=Password berhasil diganti')
+}
+
+// 4. HAPUS AKUN
+export async function deleteAccount() {
+  // 1. Cek dulu user yang login siapa (Pake client SSR biasa)
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    return redirect('/login')
+  }
+
+  // 2. Bikin Admin Client (Pake format BARU)
+  // pake 'supabase-js' langsung karena butuh akses root/admin
+  const supabaseAdmin = createAdminClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SECRET_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    }
+  )
+
+  // 3. Eksekusi Hapus User (BYPASS RLS)
+  // "admin.deleteUser" ini cuma bisa jalan kalau pake sbs_ key
+  const { error } = await supabaseAdmin.auth.admin.deleteUser(user.id)
+
+  if (error) {
+    console.error('Gagal hapus akun:', error.message)
+    return redirect('/dashboard/settings?error=Gagal menghapus akun')
+  }
+
+  // 4. Logout & Cabut
+  await supabase.auth.signOut()
+  revalidatePath('/', 'layout')
+  redirect('/login?message=Akun berhasil dihapus permanen.')
 }

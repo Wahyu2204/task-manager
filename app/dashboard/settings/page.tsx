@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { updateProfile, updateEmail, updatePassword } from "./actions";
+import { updateProfile, updateEmail, updatePassword, deleteAccount } from "./actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,8 +10,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { DeleteAccountButton } from "@/components/delete-account-button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, Trash2 } from "lucide-react";
 
 export default async function SettingsPage({
   searchParams,
@@ -149,6 +150,24 @@ export default async function SettingsPage({
                   Ganti Password
                 </Button>
               </div>
+            </form>
+          </CardContent>
+        </Card>
+
+        <Card className="border-red-200 bg-red-50/50">
+          <CardHeader>
+            <div className="flex items-center gap-2 text-red-600">
+              <Trash2 className="h-5 w-5" />
+              <CardTitle>Danger Zone</CardTitle>
+            </div>
+            <CardDescription className="text-red-600/80">
+              Aksi ini tidak bisa dibatalkan. Data lo bakal hilang permanen.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form action={deleteAccount}>
+              {/* Pake Component Button yang udah dipisah tadi */}
+              <DeleteAccountButton />
             </form>
           </CardContent>
         </Card>
