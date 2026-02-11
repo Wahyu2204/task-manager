@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"; // TabsContent apus aja kalo gak dipake
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { TaskList } from "./task-list";
@@ -14,11 +14,11 @@ export default async function TasksPage({
 
   const supabase = await createClient();
 
-  // 1. Logic Query Database (DITAMBAH FILTER ARCHIVE)
+  // Logic Query Database (DITAMBAH FILTER ARCHIVE)
   let query = supabase
     .from("tasks")
     .select("*")
-    .eq("is_archived", false) // <--- PENTING: Jangan tampilin yang diarsip
+    .eq("is_archived", false) // <--- Jangan tampilin yang diarsip
     .order("created_at", { ascending: false });
 
   if (currentTab === "pending") {
@@ -32,12 +32,11 @@ export default async function TasksPage({
 
   return (
     <div className="space-y-6">
-      {/* 1. JUDUL */}
       <div className="flex items-center justify-between animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-bold tracking-tight">My Tasks</h1>
       </div>
 
-      {/* 2. TABS & TOMBOL */}
+      {/* TABS & TOMBOL */}
       <div className="flex items-center justify-between gap-4 animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both">
         <Tabs defaultValue={currentTab} className="w-full">
           <TabsList className="grid w-full max-w-[400px] grid-cols-3">
@@ -68,7 +67,7 @@ export default async function TasksPage({
         </div>
       </div>
 
-      {/* 3. LIST TASK */}
+      {/* LIST TASK */}
       <div className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-300 ease-out fill-mode-both">
         {tasks && tasks.length > 0 ? (
           <TaskList tasks={tasks} />

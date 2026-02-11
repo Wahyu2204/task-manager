@@ -1,7 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { restoreTask, deleteTaskPermanently } from "../tasks/actions";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { RefreshCcw, Trash2 } from "lucide-react";
 
 export default async function ArchivePage() {
@@ -16,7 +15,7 @@ export default async function ArchivePage() {
 
   return (
     <div className="space-y-6">
-      {/* 1. HEADER */}
+      {/* HEADER */}
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
           Archive
@@ -26,7 +25,7 @@ export default async function ArchivePage() {
         </p>
       </div>
 
-      {/* 2. LIST ARCHIVE */}
+      {/* LIST ARCHIVE */}
       <div className="grid grid-cols-1 gap-4 animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both">
         {tasks?.map((task) => (
           <div

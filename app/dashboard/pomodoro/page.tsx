@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Data Visual (Icon & Warna tetep statis)
+// Data Visual
 const MODE_VISUALS = {
   work: {
     label: "Fokus",
@@ -44,7 +44,7 @@ const MODE_VISUALS = {
 };
 
 export default function PomodoroPage() {
-  // 1. STATE DURASI (Default values)
+  // STATE DURASI (Default values)
   const [durations, setDurations] = useState({
     work: 25,
     shortBreak: 5,
@@ -146,7 +146,7 @@ export default function PomodoroPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-8 relative">
-      {/* === 1. HEADER & SETTINGS === */}
+      {/* 1. HEADER & SETTINGS */}
       <div className="text-center space-y-2 relative w-full max-w-sm animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-extrabold tracking-tight">
           Pomodoro Timer
@@ -216,7 +216,7 @@ export default function PomodoroPage() {
         </Dialog>
       </div>
 
-      {/* === 2. TOMBOL GANTI MODE === */}
+      {/* 2. TOMBOL GANTI MODE */}
       <div className="flex p-1 bg-zinc-100 rounded-lg border border-zinc-200 animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both">
         {(Object.keys(MODE_VISUALS) as Array<keyof typeof MODE_VISUALS>).map(
           (key) => (
@@ -236,7 +236,7 @@ export default function PomodoroPage() {
         )}
       </div>
 
-      {/* === 3. KARTU TIMER UTAMA === */}
+      {/* 3. KARTU TIMER UTAMA */}
       <div
         className={cn(
           "relative w-full max-w-sm p-8 rounded-2xl transition-all duration-500 flex flex-col items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 delay-300 ease-out fill-mode-both",

@@ -17,19 +17,15 @@ export async function createTask(formData: FormData) {
   const title = formData.get('title') as string
   const priority = formData.get('priority') as string
 
-  // Validasi simpel
+  // Validasi simple
   if (!title) {
-    // SALAH (Bikin Error TypeScript):
-    // return { error: 'Judul task gak boleh kosong' } 
-
-    // BENAR (Redirect balik bawa pesan):
     redirect('/dashboard/tasks/new-task?error=Judul task gak boleh kosong')
   }
 
   // Insert ke database
   const { error } = await supabase.from('tasks').insert({
     title: title,
-    priority: priority || 'Medium', // Default Medium kalo gak dipilih
+    priority: priority || 'Medium',
     user_id: user.id,
     is_completed: false
   })
@@ -50,11 +46,11 @@ export async function createTask(formData: FormData) {
 export async function toggleTask(formData: FormData) {
   const supabase = await createClient()
   
-  // 1. Ambil ID task dan Status sekarang dari Form
+  // Ambil ID task dan Status sekarang dari Form
   const taskId = formData.get('taskId')
   const currentStatus = formData.get('currentStatus') === 'true' // Konversi string "true" jadi boolean
   
-  // 2. Update ke Database (Status dibalik pake tanda seru '!')
+  // Update ke Database (Status dibalik pake tanda seru '!')
   const { error } = await supabase
     .from('tasks')
     .update({ is_completed: !currentStatus })
@@ -65,7 +61,7 @@ export async function toggleTask(formData: FormData) {
     return
   }
 
-  // 3. Refresh halaman biar UI langsung berubah
+  // Refresh halaman biar UI langsung berubah
   revalidatePath('/dashboard/tasks')
   revalidatePath('/dashboard') // Refresh dashboard juga biar angkanya update
 }

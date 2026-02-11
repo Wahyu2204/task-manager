@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-// Ganti import ini sesuai lokasi file server client lo
 import { createClient } from '@/lib/supabase/server'
 
 export async function GET(request: Request) {
@@ -12,12 +11,10 @@ export async function GET(request: Request) {
   if (code) {
     const supabase = await createClient()
     
-    // Ini proses ajaibnya: Nuker kode dari URL jadi Session Cookie
+    // Nuker kode dari URL jadi Session Cookie
     const { error } = await supabase.auth.exchangeCodeForSession(code)
     
     if (!error) {
-      // Kalau sukses nuker, lempar user ke halaman tujuan (Home)
-      // forwardForwardedHeaders buat handling proxy kalau nanti di-deploy (opsional tapi bagus)
       const forwardedHost = request.headers.get('x-forwarded-host') 
       const isLocalEnv = process.env.NODE_ENV === 'development'
 

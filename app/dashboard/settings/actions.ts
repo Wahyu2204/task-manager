@@ -14,7 +14,7 @@ export async function updateProfile(formData: FormData) {
 
   const username = formData.get('username') as string
 
-  // Kita pake 'upsert' (Update kalau ada, Insert kalau belum ada)
+  // pake 'upsert' (Update kalau ada, Insert kalau belum ada)
   const { error } = await supabase
     .from('profiles')
     .upsert({ 
@@ -32,7 +32,7 @@ export async function updateProfile(formData: FormData) {
   return redirect('/dashboard/settings?message=Profil berhasil diupdate')
 }
 
-// 2. UPDATE EMAIL (Hati-hati, Supabase bakal kirim email konfirmasi ke email BARU dan LAMA)
+// UPDATE EMAIL
 export async function updateEmail(formData: FormData) {
   const supabase = await createClient()
   const email = formData.get('email') as string
@@ -46,7 +46,7 @@ export async function updateEmail(formData: FormData) {
   return redirect('/dashboard/settings?message=Cek email baru lo buat konfirmasi!')
 }
 
-// 3. GANTI PASSWORD
+// GANTI PASSWORD
 export async function updatePassword(formData: FormData) {
   const supabase = await createClient()
   const password = formData.get('password') as string
@@ -69,9 +69,9 @@ export async function updatePassword(formData: FormData) {
   return redirect('/dashboard/settings?message=Password berhasil diganti')
 }
 
-// 4. HAPUS AKUN
+// HAPUS AKUN
 export async function deleteAccount() {
-  // 1. Cek dulu user yang login siapa (Pake client SSR biasa)
+  // Cek dulu user yang login siapa (Pake client SSR biasa)
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -79,7 +79,7 @@ export async function deleteAccount() {
     return redirect('/login')
   }
 
-  // 2. Bikin Admin Client (Pake format BARU)
+  // Bikin Admin Client (Pake format BARU)
   // pake 'supabase-js' langsung karena butuh akses root/admin
   const supabaseAdmin = createAdminClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -92,7 +92,7 @@ export async function deleteAccount() {
     }
   )
 
-  // 3. Eksekusi Hapus User (BYPASS RLS)
+  // Eksekusi Hapus User (BYPASS RLS)
   // "admin.deleteUser" ini cuma bisa jalan kalau pake sbs_ key
   const { error } = await supabaseAdmin.auth.admin.deleteUser(user.id)
 
@@ -101,7 +101,7 @@ export async function deleteAccount() {
     return redirect('/dashboard/settings?error=Gagal menghapus akun')
   }
 
-  // 4. Logout & Cabut
+  // Logout & Cabut
   await supabase.auth.signOut()
   revalidatePath('/', 'layout')
   redirect('/login?message=Akun berhasil dihapus permanen.')

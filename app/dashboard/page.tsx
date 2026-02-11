@@ -47,7 +47,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-10">
-      {/* === 1. HEADER === */}
+      {/* 1. HEADER */}
       <div className="text-center space-y-2 max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-extrabold tracking-tight lg:text-5xl text-zinc-900">
           Progress Lo Hari Ini
@@ -61,9 +61,9 @@ export default async function DashboardPage() {
         </p>
       </div>
 
-      {/* === 2. CARDS STATISTIK === */}
+      {/* 2. CARDS STATISTIK */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl px-4 animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both">
-        {/* Card 1: Total */}
+        {/* Card 1 : Total */}
         <Card className="shadow-sm border-zinc-200 bg-white/50 hover:bg-white transition-colors hover:-translate-y-1 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium text-zinc-500">
@@ -79,7 +79,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Card 2: Pending */}
+        {/* Card 2 : Pending */}
         <Card className="shadow-sm border-orange-100 bg-orange-50/50 hover:bg-orange-50 transition-colors hover:-translate-y-1 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium text-orange-600">
@@ -95,7 +95,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        {/* Card 3: Completed */}
+        {/* Card 3 : Completed */}
         <Card className="shadow-sm border-green-100 bg-green-50/50 hover:bg-green-50 transition-colors hover:-translate-y-1 duration-300">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-sm font-medium text-green-600">

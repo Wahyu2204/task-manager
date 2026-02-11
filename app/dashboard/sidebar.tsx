@@ -12,7 +12,7 @@ import {
   Timer,
   Archive,
   PanelLeftClose,
-  PanelLeftOpen, // Icon buat tombol toggle
+  PanelLeftOpen,
 } from "lucide-react";
 import { signOut } from "@/app/login/actions";
 import { cn } from "@/lib/utils";
@@ -33,7 +33,7 @@ export function Sidebar() {
     <aside
       className={cn(
         "bg-white border-r border-zinc-200 hidden md:flex flex-col h-screen sticky top-0 transition-all duration-300 ease-in-out",
-        isCollapsed ? "w-20" : "w-64", // Animasi lebar sidebar
+        isCollapsed ? "w-20" : "w-64",
       )}
     >
       {/* HEADER SIDEBAR */}
@@ -43,7 +43,7 @@ export function Sidebar() {
           isCollapsed ? "justify-center" : "justify-between px-6",
         )}
       >
-        {/* Judul (Ilang pas collapsed) */}
+        {/* Judul */}
         {!isCollapsed && (
           <div className="flex items-center gap-2 animate-in fade-in duration-300">
             {/* Logo Kotak Hitam */}
@@ -51,7 +51,6 @@ export function Sidebar() {
               <span className="text-white font-bold text-lg">S</span>
             </div>
 
-            {/* Teks Nama Web */}
             <span className="text-xl font-bold tracking-tight text-zinc-900 whitespace-nowrap">
               SudoDo.
             </span>
@@ -88,13 +87,10 @@ export function Sidebar() {
                 variant="ghost"
                 className={cn(
                   "w-full transition-all duration-300 border-2",
-                  // Kalau collapsed: Icon ditengah (justify-center), padding 0
-                  // Kalau expanded: Icon dikiri (justify-start), padding normal
                   isCollapsed
                     ? "justify-center px-0 h-10 w-10 mx-auto"
                     : "justify-start px-3",
 
-                  // Style Aktif Retro (Tetap konsisten)
                   isActive
                     ? "border-black text-black font-bold bg-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-white"
                     : "border-transparent text-zinc-600 hover:text-black hover:bg-zinc-200",

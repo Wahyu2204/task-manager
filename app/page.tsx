@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image"; // <--- JANGAN LUPA IMPORT INI
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default async function Home() {
@@ -16,26 +16,19 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8 relative overflow-hidden">
-      
-      {/* === BACKGROUND IMAGE AREA === */}
       <div className="absolute inset-0 z-0">
-        {/* 1. Gambar Background */}
         <Image
-          src="/bg2.jpg" // Pastikan file ada di folder public
+          src="/bg2.jpg"
           alt="Background Sky"
           fill
           priority
-          className="object-cover object-top" // object-top biar langitnya kelihat jelas
+          className="object-cover object-top"
           unoptimized
         />
         
-        {/* 2. Gradient Overlay (Rahasianya disini) */}
-        {/* Ini bikin efek 'fade' dari bening di atas ke putih pekat di bawah */}
-        {/* Biar text hitam lo tetep kebaca jelas */}
         <div className="absolute inset-0 bg-gradient-to-t from-transparent" />
       </div>
 
-      {/* === NAMA WEB (POJOK KIRI ATAS) === */}
       <div className="absolute top-8 left-8 z-10 animate-in fade-in slide-in-from-top-10 duration-500 ease-out">
         <Link
           href="/"
@@ -50,7 +43,6 @@ export default async function Home() {
         </Link>
       </div>
 
-      {/* === KONTEN UTAMA (Kasih z-10 biar di atas gambar) === */}
       <div className="relative z-10 w-full max-w-2xl text-center space-y-6">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
           <p className="text-sm font-medium text-zinc-600">

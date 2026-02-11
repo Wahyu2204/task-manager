@@ -45,7 +45,6 @@ export function TaskList({ tasks }: { tasks: Task[] }) {
 
   return (
     <div className="space-y-4">
-      {/* HEADER: Muncul cuma pas lagi pilih-pilih (Select Mode) */}
       {isSelectionMode && (
         <div className="flex items-center justify-between p-4 bg-zinc-100 rounded-lg animate-in slide-in-from-top-2 border border-zinc-200">
           <span className="font-medium text-zinc-700">{selectedIds.length} item dipilih</span>
@@ -59,12 +58,10 @@ export function TaskList({ tasks }: { tasks: Task[] }) {
         </div>
       )}
 
-      {/* GRID LAYOUT: Pake class GRID punya lo yang lama */}
       <div className="grid grid-cols-4 md:grid-cols-6 gap-4">
         {tasks.map((task) => (
           <ContextMenu key={task.id}>
             
-            {/* TRIGGER: Card Tampilan Lama Lo Dibungkus Disini */}
             <ContextMenuTrigger>
               <div 
                 className={`flex flex-col justify-between h-full p-4 bg-white border rounded-lg shadow-sm transition-all

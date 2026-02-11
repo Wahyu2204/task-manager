@@ -1,5 +1,6 @@
-import { signup } from "@/app/login/actions"; // Import dari actions yang sama
+import { signup } from "@/app/login/actions";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,6 +22,19 @@ export default async function RegisterPage({
 
   return (
     <div className="flex h-screen w-full items-center justify-center px-4 relative animate-in fade-in duration-500">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/bg2.jpg"
+          alt="Background Sky"
+          fill
+          priority
+          className="object-cover object-top"
+          unoptimized
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent backdrop-blur-sm" />
+      </div>
+
       <Button
         variant="ghost"
         className="absolute top-4 left-4 md:top-8 md:left-8 animate-in fade-in slide-in-from-left-4 duration-500 ease-out"

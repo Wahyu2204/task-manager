@@ -34,7 +34,6 @@ export default async function SettingsPage({
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 pb-10">
-      {/* 1. HEADER */}
       <div className="space-y-2 text-center sm:text-left animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
         <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
         <p className="text-zinc-500">Kelola preferensi akun lo disini.</p>
@@ -59,9 +58,8 @@ export default async function SettingsPage({
         </Alert>
       )}
 
-      {/* CONTAINER KARTU */}
       <div className="flex flex-col gap-6">
-        {/* === CARD 1: PROFILE === */}
+        {/* CARD 1: PROFILE */}
         <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle>Profil Saya</CardTitle>
@@ -88,7 +86,7 @@ export default async function SettingsPage({
           </CardContent>
         </Card>
 
-        {/* === CARD 2: EMAIL === */}
+        {/* CARD 2: EMAIL */}
         <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-300 ease-out fill-mode-both hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle>Email Address</CardTitle>
@@ -117,7 +115,7 @@ export default async function SettingsPage({
           </CardContent>
         </Card>
 
-        {/* === CARD 3: PASSWORD === */}
+        {/* CARD 3: PASSWORD */}
         <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-500 ease-out fill-mode-both hover:shadow-md transition-shadow">
           <CardHeader>
             <CardTitle>Security</CardTitle>
@@ -166,7 +164,6 @@ export default async function SettingsPage({
           </CardHeader>
           <CardContent>
             <form action={deleteAccount}>
-              {/* Pake Component Button yang udah dipisah tadi */}
               <DeleteAccountButton />
             </form>
           </CardContent>

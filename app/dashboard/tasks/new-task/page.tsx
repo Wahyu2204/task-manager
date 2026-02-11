@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ChevronLeft, AlertCircle } from "lucide-react"; // Tambah icon Alert
+import { ChevronLeft, AlertCircle } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"; // Tambah komponen Alert
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 // Tambahin props searchParams disini
 export default async function AddTaskPage({
@@ -24,7 +24,6 @@ export default async function AddTaskPage({
 
   return (
     <div className="flex flex-col justify-center min-h-[80vh] space-y-10 max-w-2xl mx-auto">
-      {/* 1. TOMBOL KEMBALI */}
       <div className="mb-6 animate-in fade-in slide-in-from-left-4 duration-500 ease-out">
         <Link href="/dashboard/tasks">
           <Button
@@ -37,14 +36,14 @@ export default async function AddTaskPage({
         </Link>
       </div>
 
-      {/* 2. CARD FORM */}
+      {/* CARD FORM */}
       <Card className="animate-in fade-in slide-in-from-bottom-8 duration-500 delay-150 ease-out fill-mode-both shadow-lg">
         <CardHeader>
           <CardTitle>Tambah Task Baru</CardTitle>
           <CardDescription>Tulis apa yang perlu lo kerjain.</CardDescription>
         </CardHeader>
         <CardContent>
-          {/* 3. ERROR ALERT */}
+          {/* ERROR ALERT */}
           {error && (
             <Alert
               variant="destructive"

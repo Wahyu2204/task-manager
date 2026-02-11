@@ -1,5 +1,6 @@
 import { login, loginWithGoogle } from "./actions";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,6 +22,19 @@ export default async function LoginPage({
 
   return (
     <div className="flex h-screen w-full items-center justify-center px-4 relative animate-in fade-in duration-500">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/bg2.jpg"
+          alt="Background Sky"
+          fill
+          priority
+          className="object-cover object-top"
+          unoptimized
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent backdrop-blur-sm" />
+      </div>
+
       <Button
         variant="ghost"
         className="absolute top-4 left-4 md:top-8 md:left-8 animate-in fade-in slide-in-from-left-4 duration-500 ease-out"
@@ -68,7 +82,7 @@ export default async function LoginPage({
             </Button>
           </form>
 
-          {/* === 2. DIVIDER (PEMBATAS) === */}
+          {/* PEMBATAS */}
           <div className="relative mb-4">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t border-zinc-200" />
@@ -80,7 +94,6 @@ export default async function LoginPage({
             </div>
           </div>
 
-          {/* === 3. FORM LOGIN BIASA === */}
           <form className="grid gap-4">
             {message && (
               <div className="p-3 bg-blue-50 text-blue-900 text-sm rounded-md border border-blue-200 animate-in fade-in zoom-in-95 duration-300">

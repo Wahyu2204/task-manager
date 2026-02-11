@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
 export async function login(formData: FormData) {
-  const supabase = await createClient() // Pastikan createClient lo bener import-nya
+  const supabase = await createClient()
 
   // Ambil data dari form
   const email = formData.get('email') as string
@@ -41,7 +41,6 @@ export async function signup(formData: FormData) {
     email,
     password,
     options: {
-      // PENTING: Ganti URL ini sesuai URL lokal lo
       emailRedirectTo: 'http://localhost:3000/auth/callback',
     },
   })
@@ -63,7 +62,6 @@ export async function loginWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      // Ini bakal arahin user ke route.ts yang kita buat di langkah 1
       redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/auth/callback`,
     },
   })
